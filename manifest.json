@@ -2,7 +2,6 @@
     "domain": "idrac",
     "name": "DELL iDRAC",
     "codeowners": ["@APersonDoingStuff"],
-    "documentation": "https://www.home-assistant.io/integrations/proxmoxve",
     "iot_class": "local_polling",
     "loggers": ["requests"],
     "version": "1.0.0",
