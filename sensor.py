@@ -1,8 +1,11 @@
+"""iDRAC Sensors."""
+
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
-from .const import DOMAIN, COORDINATORS, IDRAC_DATA
-from .entity import iDRACsensor, SENSOR_DESCRIPTIONS
+
+from .const import COORDINATORS, DOMAIN, IDRAC_DATA
+from .entity import SENSOR_DESCRIPTIONS, iDRACsensor
 
 
 async def async_setup_platform(
@@ -36,7 +39,7 @@ async def async_setup_platform(
 def get_powerstate_sensor(coordinator, host_name, name, description):
     """Create Sensor for dependency in host."""
 
-    if (coordinator_data := coordinator.data) is None:
+    if (coordinator.data) is None:
         return None
 
     dep_sensor = iDRACsensor(

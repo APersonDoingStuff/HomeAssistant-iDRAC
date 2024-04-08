@@ -155,6 +155,7 @@ class idracClient:
                 OSError,
             ):
                 self.connectionEstablished = False
+                self.powerState = "Unknown"
                 return "Unknown"
 
             if response.status_code == 200:
@@ -176,8 +177,10 @@ class idracClient:
                 result = find_values("PowerState", str1)
 
                 if len(result) == 0:
+                    self.powerState = "Unknown"
                     return "Unknown"
                 else:
+                    self.powerState = result[0]
                     return result[0]
             else:
                 return "Unknown"
